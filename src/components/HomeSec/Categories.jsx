@@ -137,7 +137,6 @@ export default function Categories() {
       spinReq = requestAnimationFrame(spinLoop);
     };
     spinLoop();
-
     const handleDown = (e) => {
       isDragging = true;
       spinActive = false; // pause spin while dragging
@@ -244,7 +243,6 @@ export default function Categories() {
                 />
               )}
             </div>
-
             {/* Right - Text */}
             <div className="w-full md:w-1/2">
               <h3 className="text-2xl font-semibold mb-3">

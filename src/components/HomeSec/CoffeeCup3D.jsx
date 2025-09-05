@@ -3,8 +3,7 @@ import React, { forwardRef, Suspense, useRef } from "react";
 import { Canvas, useLoader, useFrame } from "@react-three/fiber";
 import { OBJLoader } from "three/examples/jsm/loaders/OBJLoader";
 
-/**
- * Model component — applies motion.current values to the loaded object
+/* Model component — applies motion.current values to the loaded object
  */
 const Model = ({ motionRef }) => {
   const group = useRef(); // local ref for the 3D object
@@ -24,8 +23,7 @@ const Model = ({ motionRef }) => {
   return <primitive ref={group} object={obj} />;
 };
 
-/**
- * CoffeeCup3D wrapper.
+/* CoffeeCup3D wrapper.
  * - motion: ref object with { x,y,rotY,tiltZ,scale }
  * - fillParent (boolean): if true, canvas will expand to fill parent placeholder
  */

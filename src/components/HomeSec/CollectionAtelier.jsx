@@ -3,7 +3,7 @@ import React from "react";
 import coffeeImg from '../../assets/products/coffee1.webp'
 const CollectionAtelier = () => {
   return (
-    <div className="bg-[#F6F6ED] h-[90vh] flex flex-col md:flex-row items-center justify-center md:justify-between py-10 px-5 lg:px-20">
+    <div className=" h-[75vh] flex flex-col md:flex-row items-center justify-center md:justify-between py-10 lg:py-20 px-5 lg:px-20">
       {/* Left: Perfume Image Section */}
       <div className="w-full lg:w-1/2 flex justify-center">
         <img
@@ -32,3 +32,6 @@ const CollectionAtelier = () => {
 };
 
 export default CollectionAtelier;
+
+
+// bg-[#F6F6ED]

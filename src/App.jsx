@@ -4,6 +4,7 @@ import LiquidChrome from './components/Hero/LiquidChrome';
 import Navbar from './components/Navbar';
 import Home from './Pages/Home';
 import MainRoutes from './Routes/MainRoutes';
+import { Footer } from './components/Footer';
 
 
 
@@ -13,10 +14,10 @@ const App = () => {
 
     <div className="w-full h-screen relative">
 
-  
-    <Navbar/>
-    <MainRoutes/>
 
+      <Navbar />
+      <MainRoutes />
+      <Footer />
 
     </div>
 
