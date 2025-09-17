@@ -1,3 +1,5 @@
+
+
 // // Footer.jsx
 // import FooterTitle from './FooterTitle'
 // import cafforaLogo from '/TLogo.png'
@@ -39,8 +41,9 @@
 //         </div>
 
 //         {/* Middle Big Logo / Name */}
-
+        
 //             <FooterTitle/>
+        
 
 //         {/* Bottom Row */}
 //         <div className="flex flex-col md:flex-row justify-between items-center border-t border-gray-700 pt-6 text-sm text-gray-400 space-y-4 md:space-y-0">
@@ -57,14 +60,8 @@
 //   )
 // }
 
-import React, {
-  useMemo,
-  useRef,
-  useEffect,
-  useState,
-  lazy,
-  Suspense,
-} from "react";
+
+import React, { useMemo, useRef, useEffect, useState, lazy, Suspense } from "react";
 
 // ✅ Lazy load FooterTitle (code-splitting)
 const FooterTitle = lazy(() => import("./FooterTitle"));
@@ -172,11 +169,7 @@ export function Footer() {
           </div>
 
           {/* Middle Big Logo / Name */}
-          <Suspense
-            fallback={
-              <div className="text-center text-gray-400">Loading...</div>
-            }
-          >
+          <Suspense fallback={<div className="text-center text-gray-400">Loading...</div>}>
             <FooterTitle />
           </Suspense>
 
@@ -186,11 +179,7 @@ export function Footer() {
             <p>Brooklyn, NY</p>
             <div className="flex space-x-6">
               {socialLinks.map((link) => (
-                <a
-                  key={link.label}
-                  href={link.href}
-                  className="hover:text-white"
-                >
+                <a key={link.label} href={link.href} className="hover:text-white">
                   {link.label}
                 </a>
               ))}

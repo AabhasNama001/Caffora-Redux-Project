@@ -1,5 +1,7 @@
 import { useRef, useEffect, useState } from "react";
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
+import { useLocation } from "react-router-dom";
+
 const GooeyNav = ({
   items,
   animationTime = 600,
@@ -133,6 +135,17 @@ const GooeyNav = ({
     resizeObserver.observe(containerRef.current);
     return () => resizeObserver.disconnect();
   }, [activeIndex]);
+
+  const location = useLocation();
+
+  // Sync activeIndex based on current route
+  useEffect(() => {
+    const currentIndex = items.findIndex(item => item.href === location.pathname);
+    if (currentIndex !== -1 && currentIndex !== activeIndex) {
+      setActiveIndex(currentIndex);
+    }
+  }, [location.pathname]);
+
 
   return (
     <>

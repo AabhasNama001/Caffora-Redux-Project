@@ -1,6 +1,16 @@
+
+
+
+
+
 // import { useRef, useState, useEffect } from "react";
 
+// import { Swiper, SwiperSlide } from "swiper/react";
+// import { EffectCoverflow, Pagination } from "swiper/modules";
 
+// import "swiper/css";
+// import "swiper/css/effect-coverflow";
+// import "swiper/css/pagination";
 
 
 // export default function BestSeller() {
@@ -38,6 +48,22 @@
 //       price: "£12.00",
 //       btn: "BUY NOW",
 //     },
+//     ,
+//     {
+//       id: 5,
+//       title: "Rituals Subscription.",
+//       desc: "Smooth, everyday coffee. Rituals, on subscription.designed to make every day taste better.",
+//       price: "£12.00",
+//       btn: "BUY NOW",
+//     },
+//     ,
+//     {
+//       id: 6,
+//       title: "Rituals Subscription.",
+//       desc: "Smooth, everyday coffee. Rituals, on subscription.designed to make every day taste better.",
+//       price: "£12.00",
+//       btn: "BUY NOW",
+//     }
 //   ];
 
 //   // When buttons mount and refs are set, notify swiper
@@ -58,8 +84,32 @@
 
 //         {/* Slider */}
 
+//         <Swiper
+//           effect={"coverflow"}
+//           grabCursor={true}
+//           centeredSlides={true}
+//           loop={true}
+//           breakpoints={{
+//             0: {
+//               slidesPerView: 1,
+//             },
+//             768: {
+//               slidesPerView: 2,
+//             },
+//           }}
+//           coverflowEffect={{
+//             rotate: 50,
+//             stretch: 0,
+//             depth: 100,
+//             modifier: 1,
+//             slideShadows: true,
+//           }}
+//           pagination={{ clickable: true }}
+//           modules={[EffectCoverflow, Pagination]}
+//           className="w-full max-w-8xl py-12"
+//         >
 //           {products.map((item) => (
-//             <div key={item.id}>
+//             <SwiperSlide key={item.id}>
 //               <div className="bg-[#DCC4A6] rounded-2xl p-6 flex flex-col h-full shadow-md">
 //                 <div className="h-40 bg-gray-200 rounded-xl flex items-center justify-center mb-6">
 //                   {/* Placeholder for product image */}
@@ -77,8 +127,9 @@
 //                   {item.btn}
 //                 </button>
 //               </div>
-//             </div>
+//             </SwiperSlide>
 //           ))}
+//         </Swiper>
 
 
 //       </div>
@@ -88,8 +139,7 @@
 
 
 
-
-import { useRef, useState, useEffect } from "react";
+import { useRef, useState, useEffect, useMemo } from "react";
 
 import { Swiper, SwiperSlide } from "swiper/react";
 import { EffectCoverflow, Pagination } from "swiper/modules";
@@ -98,14 +148,13 @@ import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
 
-
 export default function BestSeller() {
   const prevRef = useRef(null);
   const nextRef = useRef(null);
-
   const [navReady, setNavReady] = useState(false);
 
-  const products = [
+  // Memoized products array
+  const products = useMemo(() => [
     {
       id: 1,
       title: "1829 Espresso.",
@@ -134,7 +183,6 @@ export default function BestSeller() {
       price: "£12.00",
       btn: "BUY NOW",
     },
-    ,
     {
       id: 5,
       title: "Rituals Subscription.",
@@ -142,7 +190,6 @@ export default function BestSeller() {
       price: "£12.00",
       btn: "BUY NOW",
     },
-    ,
     {
       id: 6,
       title: "Rituals Subscription.",
@@ -150,12 +197,13 @@ export default function BestSeller() {
       price: "£12.00",
       btn: "BUY NOW",
     }
-  ];
+  ], []);
 
-  // When buttons mount and refs are set, notify swiper
   useEffect(() => {
     setNavReady(true);
   }, []);
+
+  if (!products.length) return null;
 
   return (
     <section className="bg-[#FAF4EB] py-12 px-6">
@@ -169,19 +217,14 @@ export default function BestSeller() {
         </div>
 
         {/* Slider */}
-
         <Swiper
           effect={"coverflow"}
           grabCursor={true}
           centeredSlides={true}
           loop={true}
           breakpoints={{
-            0: {
-              slidesPerView: 1,
-            },
-            768: {
-              slidesPerView: 2,
-            },
+            0: { slidesPerView: 1 },
+            768: { slidesPerView: 2 },
           }}
           coverflowEffect={{
             rotate: 50,
@@ -198,7 +241,6 @@ export default function BestSeller() {
             <SwiperSlide key={item.id}>
               <div className="bg-[#DCC4A6] rounded-2xl p-6 flex flex-col h-full shadow-md">
                 <div className="h-40 bg-gray-200 rounded-xl flex items-center justify-center mb-6">
-                  {/* Placeholder for product image */}
                   <span className="text-gray-500">Product Image</span>
                 </div>
                 <h3 className="text-lg font-semibold text-black mb-2">{item.title}</h3>
@@ -216,8 +258,6 @@ export default function BestSeller() {
             </SwiperSlide>
           ))}
         </Swiper>
-
-
       </div>
     </section>
   );

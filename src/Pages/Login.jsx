@@ -14,11 +14,16 @@ export default function Login() {
         formState: { errors },
     } = useForm();
     const dispatch = useDispatch();
-    const onLoginHandler = (user) => {
+    const onLoginHandler = async (user) => {
         console.log("Form Data:", user);
         reset();
-        dispatch(asyncLoginUser(user));
-        toast.success('Login Successfully!')
+        const success = await dispatch(asyncLoginUser(user));
+
+        if (success) {
+            toast.success("Login Successfully!");
+        } else {
+            toast.error("Invalid Email or Password!");
+        }
     };
 
     return (
