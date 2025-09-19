@@ -1,13 +1,7 @@
-import React from 'react'
-import BestSeller from '../components/HomeSec/BestSeller'
+import React from "react";
 
 const About = () => {
-  return (
-    <div>
+  return <div>About</div>;
+};
 
-  
-    </div>
-  )
-}
-
-export default About
+export default About;
