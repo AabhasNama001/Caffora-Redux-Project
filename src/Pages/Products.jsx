@@ -9,7 +9,7 @@ const Products = () => {
     console.log(products.length)
     return (
         <InfiniteScroll
-            className='overflow-x-hidden min-h-[100vh] relative z-21'
+            className='overflow-x-hidden min-h-[100vh] relative z-21  bg-[#FCF7E6]'
             dataLength={products.length}
             next={fetchProducts}
             hasMore={hasMore}
@@ -20,7 +20,7 @@ const Products = () => {
                 </p>
             }
         >
-            <div className='flex flex-wrap'>
+            <div className='flex flex-wrap justify-center   '>
                 {products.map((product) => {
                     return <Suspense
                         key={product.id}
