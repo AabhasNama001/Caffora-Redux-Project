@@ -30,17 +30,17 @@ export default function Register() {
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-[#f4e7cf] p-6 relative z-[10]">
-            <div className="bg-white shadow-2xl rounded-3xl flex flex-col md:flex-row w-full max-h-fit max-w-5xl overflow-hidden">
+            <div className="my-25 bg-white shadow-2xl rounded-3xl flex flex-col md:flex-row w-full max-h-fit max-w-5xl overflow-hidden">
                 <div className="bg-[#e57c23] flex items-center justify-center  md:w-1/2">
                     <img
-                        src="../public/telep.png"
+                        src="https://images.unsplash.com/photo-1509042239860-f550ce710b93?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8M3x8Y29mZmVlfGVufDB8MXwwfHx8MA%3D%3D"
                         alt="Support Phone"
                         className="hidden md:block object-cover md:h-[40rem] md:w-[40rem] "
                     />
                     <img
-                        src="../public/telephone.png"
+                        src="https://images.unsplash.com/photo-1497935586351-b67a49e012bf?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxzZWFyY2h8MTh8fGNvZmZlZXxlbnwwfDB8MHx8fDA%3D"
                         alt="Support Phone"
-                        className="md:hidden object-cover  "
+                        className="md:hidden object-fill w-full h-full "
                     />
                 </div>
                 <div className="p-10 md:w-1/2">

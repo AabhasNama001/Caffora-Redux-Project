@@ -28,17 +28,17 @@ export default function Login() {
 
     return (
         <div className="min-h-screen flex items-center justify-center bg-[#f4e7cf] p-6 relative z-[10]">
-            <div className="bg-white shadow-2xl rounded-3xl flex flex-col md:flex-row w-full max-h-fit max-w-5xl overflow-hidden">
+            <div className="my-25 bg-white shadow-2xl rounded-3xl flex flex-col md:flex-row w-full max-h-fit max-w-5xl overflow-hidden">
                 <div className="bg-[#e57c23] flex items-center justify-center  md:w-1/2">
                     <img
-                        src="../public/telep.png"
+                        src="https://images.unsplash.com/photo-1603792026661-f7bba5709210?w=500&auto=format&fit=crop&q=60&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1yZWxhdGVkfDEwNXx8fGVufDB8fHx8fA%3D%3D"
                         alt="Support Phone"
                         className="hidden md:block object-cover md:h-[40rem] md:w-[40rem] "
                     />
                     <img
-                        src="../public/telephone.png"
+                        src="https://images.unsplash.com/photo-1444418776041-9c7e33cc5a9c?q=80&w=1170&auto=format&fit=crop&ixlib=rb-4.1.0&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D"
                         alt="Support Phone"
-                        className="md:hidden object-cover  "
+                        className="md:hidden object-cover w-full h-full "
                     />
                 </div>
                 <div className="p-10 md:w-1/2">

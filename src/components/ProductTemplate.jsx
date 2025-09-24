@@ -37,7 +37,7 @@ const ProductTemplate = ({ product }) => {
         <div className='absolute inset-0 flex items-end justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10'> {/* Added z-10 for button and overlay background */}
           {/* We'll use a semi-transparent background color here if needed, not a background image */}
           <div className='absolute inset-0  bg-opacity-50'></div> {/* Semi-transparent white overlay */}
-          <button className='absolute bottom-3 border-2 border-white text-sm px-6 py-2 bg-[#de7008] text-white  opacity-0 md:translate-y-full md:group-hover:opacity-100 md:group-hover:translate-y-0 active:scale-[0.9] transition-all duration-300 z-20 cursor-pointer '> {/* Added z-20 for button to be above overlay */}
+          <button className='absolute bottom-3 border-2 border-white text-sm px-6 py-2 bg-[#aa5607] text-white  opacity-0 md:translate-y-full md:group-hover:opacity-100 md:group-hover:translate-y-0 active:scale-[0.9] transition-all duration-300 z-20 cursor-pointer '> {/* Added z-20 for button to be above overlay */}
             Quick Add
           </button>
         </div>
@@ -49,11 +49,11 @@ const ProductTemplate = ({ product }) => {
           <h1 className='text-sm text-gray-500 font-light'>{product.category}</h1>
           {/* Removed duplicate BsHeart here, as it's already on the image */}
         </div>
-        <h2 className='text-lg mt-2 font-medium md:h-[60px] w-[95%]'>{product.title}</h2>
-        <p className='text-md font-bold mt-1'>
+        <h2 className='text-lg mt-2 font-black md:h-[60px] w-[95%] md:text-xl'>{product.title}</h2>
+        <p className='text-md font-semibold mt-1 md:text-lg'>
           Rs. {product.price}
         </p>
-        <button className='md:hidden border-2 border-white text-sm px-6 py-2  mt-4 bg-[#de7008] text-white active:scale-[0.9] transition-all duration-300 z-20 cursor-pointer '> {/* Added z-20 for button to be above overlay */}
+        <button className='md:hidden border-2 border-white text-sm px-6 py-2  mt-4 bg-[#aa5607] text-white active:scale-[0.9] transition-all duration-300 z-20 cursor-pointer '> {/* Added z-20 for button to be above overlay */}
           Quick Add
         </button>
       </div>
