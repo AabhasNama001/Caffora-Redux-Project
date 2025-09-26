@@ -9,3 +9,22 @@ export const asyncLoadProducts = ()=>async(dispatch,getState)=>{
         console.log(err)
     }
 }
+
+
+export const asyncCreateProducts = (product)=>async(dispatch,getState)=>{
+    try{
+        await axios.post('/products',product);
+        dispatch(asyncLoadProducts());
+    }catch(err){
+        console.log(err)
+    }
+}
+
+export const asyncUpdateProducts = (id,product)=>async(dispatch,getState)=>{
+    try{
+        await axios.post("/products/"+id,product);
+        dispatch(asyncLoadProducts());
+    }catch(err){
+        console.log(err)
+    }
+}

@@ -11,21 +11,23 @@ const ProductTemplate = ({ product }) => {
     <div className='w-[85vw] max-w-[500px] md:w-[340px]  md:h-[500px] lg:w-[420px] lg:h-[585px] mb-8 py-4 flex justify-center items-center flex-col md:px-2 '>
       <div className='relative w-fit h-full overflow-hidden group  '>
         {/* Default image (product.image[0]) */}
-        <img
-          className=' w-full md:h-fit  object-cover transition-opacity duration-300 group-hover:opacity-0'
-          src={product.image[0]}
-          alt={product.title}
-        />
-
-        {/* Hover image (product.image[1]) - positioned absolutely to overlay */}
-        {/* Only render if product.image[1] exists */}
-        {product.image[1] && (
+       
           <img
-            className='absolute inset-0  w-full  object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300'
-            src={product.image[1]}
-            alt={`${product.title} (hover)`}
+            className=' w-full md:h-fit  object-cover transition-opacity duration-300 group-hover:opacity-0'
+            src={product.image[0]}
+            alt={product.title}
           />
-        )}
+
+          {/* Hover image (product.image[1]) - positioned absolutely to overlay */}
+          {/* Only render if product.image[1] exists */}
+          {product.image[1] && (
+            <img
+              className='absolute inset-0  w-full  object-cover opacity-0 group-hover:opacity-100 transition-opacity duration-300'
+              src={product.image[1]}
+              alt={`${product.title} (hover)`}
+            />
+          )}
+    
 
 
         {/* Wishlist Heart Icon (top right) */}
@@ -49,7 +51,8 @@ const ProductTemplate = ({ product }) => {
           <h1 className='text-sm text-gray-500 font-light'>{product.category}</h1>
           {/* Removed duplicate BsHeart here, as it's already on the image */}
         </div>
-        <h2 className='text-lg mt-2 font-black md:h-[60px] w-[95%] md:text-xl'>{product.title}</h2>
+         <Link  to={`/products/${product.id}`} className='cursor-pointer'>
+        <h2 className='text-lg mt-2 font-black md:h-[60px] w-[95%] md:text-xl'>{product.title}</h2></Link>
         <p className='text-md font-semibold mt-1 md:text-lg'>
           Rs. {product.price}
         </p>

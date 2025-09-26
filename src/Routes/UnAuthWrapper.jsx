@@ -7,7 +7,7 @@ const UnAuthWrapper = (props) => {
     const {users} = useSelector((state)=> state.userReducer);
     
 
-  return !users ? props.children : <Navigate  to = '/'/>;
+  return !users ? props.children : <Navigate  to = '/home'/>;
 }
 
 export default UnAuthWrapper    

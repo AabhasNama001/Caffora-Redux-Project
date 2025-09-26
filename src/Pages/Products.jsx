@@ -121,9 +121,9 @@ const Products = () => {
                 }
             >
                 <div className='flex flex-wrap justify-center max-w-[1450px]'>
-                    {products.map((product) => (
+                    {products.map((product,index) => (
                         <Suspense
-                            key={product.id}
+                            key={index}
                             fallback={
                                 <h1 className='text-center text-6xl text-yellow-300'>Loading...</h1>
                             }>

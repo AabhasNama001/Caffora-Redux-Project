@@ -7,14 +7,17 @@ import Login from '../Pages/Login'
 import AuthWrapper from './AuthWrapper'
 import UnAuthWrapper from './UnAuthWrapper'
 import Products from '../Pages/Products'
+import ProductPage from '../components/ProductPage'
+import CreateProduct from '../Pages/admin/CreateProduct'
 
 const MainRoutes = () => {
     return (
         <div>
             <Routes>
-                <Route path="/" element={<AuthWrapper><Home /></AuthWrapper>} />
+                <Route path="/home" element={<AuthWrapper><Home /></AuthWrapper>} />
                 <Route path="/products" element={<Products />} />
-                {/* <Route path="/contact" element={<Contact />} /> */}
+                <Route path="/products/:id" element={<ProductPage />} />
+                <Route path="/create-product" element={<CreateProduct />} />
                 <Route path="/register" element={<UnAuthWrapper><Register /></UnAuthWrapper>} />
                 <Route path="/login" element={<UnAuthWrapper><Login /></UnAuthWrapper>} />
             </Routes>
