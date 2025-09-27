@@ -9,8 +9,6 @@ import { useDispatch, useSelector } from 'react-redux';
 import { useEffect } from 'react';
 import { asyncCurrentUser } from './store/actions/userActions';
 
-
-
 const App = () => {
 
   const dispatch = useDispatch();
@@ -19,19 +17,12 @@ const App = () => {
     !users && dispatch(asyncCurrentUser());
   },[users])
   return (
-
-
     <div className="w-full h-[100%] relative">
-
-
       <Navbar />
       <MainRoutes />
       <div className='h-[100vh]'></div>
       <Footer />
-
     </div>
-
-
   )
 }
 
