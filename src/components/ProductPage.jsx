@@ -80,7 +80,7 @@ const ProductPage = () => {
                         {/* Price */}
                         <div className="flex items-baseline mb-6">
                             <span className="text-gray-600 line-through text-2xl md:text-3xl mr-3">Rs. {product.price + 350}</span>
-                            <span className="text-[#8d2f2f] font-bold text-3xl md:text-4xl">Rs. {product.price + 130}</span>
+                            <span className="text-[#8d2f2f] font-bold text-3xl md:text-4xl">Rs. {product.price}</span>
                         </div>
 
                         {/* Description */}

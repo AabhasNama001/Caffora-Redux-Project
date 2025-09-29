@@ -172,7 +172,7 @@ export default function CreateProduct() {
             >
               <option value="">Select Category</option>
               <option value="beans">☕ Coffee Beans</option>
-              <option value="insta-pour">💧 Insta Pour</option>
+              <option value="instaPour">💧 Insta Pour</option>
               <option value="equipments">⚙️ Equipments</option>
               <option value="coffee">🥤 Coffees</option>
               <option value="mugs-and-glasses">🥛 Glasses & Mugs</option>

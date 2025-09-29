@@ -54,7 +54,7 @@ const ProductTemplate = ({ product }) => {
          <Link  to={`/products/${product.id}`} className='cursor-pointer'>
         <h2 className='text-lg mt-2 font-black md:h-[60px] w-[95%] md:text-xl'>{product.title}</h2></Link>
         <p className='text-md font-semibold mt-1 md:text-lg'>
-          Rs. {product.price}
+          Rs. {product.price } 
         </p>
         <button className='md:hidden border-2 border-white text-sm px-6 py-2  mt-4 bg-[#aa5607] text-white active:scale-[0.9] transition-all duration-300 z-20 cursor-pointer '> {/* Added z-20 for button to be above overlay */}
           Quick Add

@@ -22,7 +22,8 @@ export const asyncCreateProducts = (product)=>async(dispatch,getState)=>{
 
 export const asyncUpdateProducts = (id,product)=>async(dispatch,getState)=>{
     try{
-        await axios.post("/products/"+id,product);
+        console.log(product)
+        await axios.patch("/products/"+id,product);
         dispatch(asyncLoadProducts());
     }catch(err){
         console.log(err)
