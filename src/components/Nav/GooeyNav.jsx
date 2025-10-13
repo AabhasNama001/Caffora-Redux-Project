@@ -303,22 +303,44 @@ const GooeyNav = ({
               textShadow: "0 1px 1px hsl(205deg 30% 10% / 0.2)",
             }}
           >
-            {items.map((item, index) => (
-              <li
-                key={index}
-                className={`rounded-full relative cursor-pointer transition-[background-color_color_box-shadow] duration-300 ease shadow-[0_0_0.5px_1.5px_transparent] text-black ${activeIndex === index ? "active" : ""
-                  }`}
-              >
-                <Link
-                  onClick={(e) => handleClick(e, index)}
-                  to={item.href}
-                  onKeyDown={(e) => handleKeyDown(e, index)}
-                  className="outline-none py-[0.3em] px-[0.6em] inline-block"
-                >
-                  {item.label}
-                </Link>
-              </li>
-            ))}
+            {items.map((item, index) => {
+              if (index < 3) {
+                return (
+                    <li
+                      key={index}
+                      className={`rounded-full relative cursor-pointer transition-[background-color_color_box-shadow] duration-300 ease shadow-[0_0_0.5px_1.5px_transparent] text-black ${activeIndex === index ? "active" : ""
+                        }`}
+                    >
+                      <Link
+                        onClick={(e) => handleClick(e, index)}
+                        to={item.href}
+                        onKeyDown={(e) => handleKeyDown(e, index)}
+                        className="outline-none py-[0.3em] px-[0.6em] inline-block"
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                )
+              }
+              else{
+                return (
+                  <li
+                    key={index}
+                    className={`rounded-full relative cursor-pointer transition-[background-color_color_box-shadow] duration-300 ease shadow-[0_0_0.5px_1.5px_transparent] text-black ${activeIndex === index ? "active" : ""
+                      } hidden`}
+                  >
+                    <Link
+                      onClick={(e) => handleClick(e, index)}
+                      to={item.href}
+                      onKeyDown={(e) => handleKeyDown(e, index)}
+                      className="outline-none py-[0.3em] px-[0.6em] inline-block"
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                )
+              }
+            })}
           </ul>
         </nav>
         <span className="effect filter" ref={filterRef} />

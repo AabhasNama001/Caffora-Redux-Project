@@ -2,11 +2,33 @@ import React from 'react'; // useState is not needed if only using group-hover
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { BsHeart } from 'react-icons/bs';
+import { asyncUpdateUser } from '../store/actions/userActions';
 
 const ProductTemplate = ({ product }) => {
   const dispatch = useDispatch();
-  // const users = useSelector((state) => state.userReducer.users); // users not used, can remove if not needed elsewhere
+  const users = useSelector((state) => state.userReducer.users); // users not used, can remove if not needed elsewhere
 
+
+  const AddToCartHandler = (product)=>{
+
+    const copyUser = { ...users, cart:[...users.cart]}
+    const findProductInCart = copyUser.cart.findIndex((c)=> c?.product?.id === product.id)
+
+    if(findProductInCart === -1){
+      copyUser.cart.push({
+        product,
+        quantity:1
+      }) 
+    }
+    else{
+      copyUser.cart[findProductInCart] = {
+        product,
+        quantity: copyUser.cart[findProductInCart].quantity + 1
+      }
+    }
+    dispatch(asyncUpdateUser(copyUser.id,copyUser))
+
+  }
   return (
     <div className='w-[85vw] max-w-[500px] md:w-[340px]  md:h-[500px] lg:w-[420px] lg:h-[585px] mb-8 py-4 flex justify-center items-center flex-col md:px-2 '>
       <div className='relative w-fit h-full overflow-hidden group  '>
@@ -39,7 +61,7 @@ const ProductTemplate = ({ product }) => {
         <div className='absolute inset-0 flex items-end justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300 z-10'> {/* Added z-10 for button and overlay background */}
           {/* We'll use a semi-transparent background color here if needed, not a background image */}
           <div className='absolute inset-0  bg-opacity-50'></div> {/* Semi-transparent white overlay */}
-          <button className='absolute bottom-3 border-2 border-white text-sm px-6 py-2 bg-[#aa5607] text-white  opacity-0 md:translate-y-full md:group-hover:opacity-100 md:group-hover:translate-y-0 active:scale-[0.9] transition-all duration-300 z-20 cursor-pointer '> {/* Added z-20 for button to be above overlay */}
+          <button onClick={()=>{AddToCartHandler(product)}} className='absolute bottom-3 border-2 border-white text-sm px-6 py-2 bg-[#aa5607] text-white  opacity-0 md:translate-y-full md:group-hover:opacity-100 md:group-hover:translate-y-0 active:scale-[0.9] transition-all duration-300 z-20 cursor-pointer '> {/* Added z-20 for button to be above overlay */}
             Quick Add
           </button>
         </div>
@@ -56,7 +78,7 @@ const ProductTemplate = ({ product }) => {
         <p className='text-md font-semibold mt-1 md:text-lg'>
           Rs. {product.price } 
         </p>
-        <button className='md:hidden border-2 border-white text-sm px-6 py-2  mt-4 bg-[#aa5607] text-white active:scale-[0.9] transition-all duration-300 z-20 cursor-pointer '> {/* Added z-20 for button to be above overlay */}
+        <button onClick={()=>{AddToCartHandler(product)}} className='md:hidden border-2 border-white text-sm px-6 py-2  mt-4 bg-[#aa5607] text-white active:scale-[0.9] transition-all duration-300 z-20 cursor-pointer '> {/* Added z-20 for button to be above overlay */}
           Quick Add
         </button>
       </div>

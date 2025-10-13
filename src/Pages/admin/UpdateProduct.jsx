@@ -2,7 +2,8 @@ import React, { useState, useEffect } from "react";
 import { useForm } from "react-hook-form";
 import { useDispatch } from "react-redux";
 import { toast } from "react-toastify";
-import { asyncUpdateProducts } from "../../store/actions/productActions";
+import { asyncDeleteProducts, asyncUpdateProducts } from "../../store/actions/productActions";
+import { useNavigate } from "react-router-dom";
 
 // --- ADDED CODE START ---
 
@@ -22,7 +23,7 @@ const IMAGE_FOLDER_MAP = {
 // Assume this component receives a 'product' prop, which is the product to be updated.
 export default function UpdateProduct({ product }) {
     const dispatch = useDispatch();
-
+    const  navigate = useNavigate();
     // Determine the initial upload method based on the existing image data
     const initialUploadMethod = product?.image?.every((url) =>
         url?.startsWith("http") // Added safe chaining (?)
@@ -171,6 +172,13 @@ export default function UpdateProduct({ product }) {
             setImageUrls(["", ""]);
         }
     };
+
+    const  DeleteProductHandler = ()=>{
+
+        dispatch(asyncDeleteProducts(product.id));
+        navigate('/products');
+
+    }
 
     // Render the form
     return (
@@ -415,6 +423,13 @@ export default function UpdateProduct({ product }) {
                         className="w-full bg-[#e57c23] text-white font-black py-3 rounded-lg hover:bg-[#cf6d1f] transition duration-300 shadow-md"
                     >
                         Update Product
+                    </button>
+                    <button
+                        type="button"
+                        className="w-full bg-[#e56423] text-white font-black py-3 rounded-lg hover:bg-[#cf6d1f] transition duration-300 shadow-md"
+                        onClick={DeleteProductHandler}
+                    >
+                        Delete Product
                     </button>
                 </form>
             </div>
