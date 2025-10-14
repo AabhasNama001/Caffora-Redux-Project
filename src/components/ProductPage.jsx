@@ -5,6 +5,7 @@ import { useParams } from 'react-router-dom';
 import { asyncLoadProducts } from '../store/actions/productActions'; // Assuming you have an action to fetch products
 import UpdateProduct from '../Pages/admin/UpdateProduct';
 import { asyncUpdateUser } from '../store/actions/userActions';
+import { toast } from 'react-toastify';
 
 const ProductPage = () => {
     const [quantity, setQuantity] = useState(1);
@@ -41,6 +42,7 @@ const ProductPage = () => {
             }
         }
          dispatch(asyncUpdateUser(copyUser.id,copyUser))
+         toast.success('Added to cart')
     }
     // Handle different states: loading, error, and data
     if (loading) {

@@ -17,10 +17,10 @@ import Cart from '../Pages/Cart'
         return (
             <div>
                 <Routes>
-                    <Route path="/" element={<AuthWrapper><Home /></AuthWrapper>} />
+                    <Route path="/" element={<Home />} />
                     <Route path="/products" element={<Products />} />
-                    <Route path="/products/:id" element={<ProductPage />} />
-                    <Route path="/create-product" element={<CreateProduct />} />
+                    <Route path="/products/:id" element={<AuthWrapper><ProductPage /></AuthWrapper>} />
+                    <Route path="/create-product" element={<AuthWrapper><CreateProduct /></AuthWrapper>} />
                     <Route path="/register" element={<UnAuthWrapper><Register /></UnAuthWrapper>} />
                     <Route path="/login" element={<UnAuthWrapper><Login /></UnAuthWrapper>} />
                     <Route path='/settings' element={<AuthWrapper><Settings/></AuthWrapper>}/>

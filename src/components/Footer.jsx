@@ -1,4 +1,5 @@
 import React, { useMemo, useRef, useEffect, useState, lazy, Suspense } from "react";
+import { NavLink } from "react-router-dom";
 
 // ✅ Lazy load FooterTitle (code-splitting)
 const FooterTitle = lazy(() => import("./FooterTitle"));
@@ -12,7 +13,7 @@ export function Footer() {
     () => [
       { href: "/products", label: "Products" },
       { href: "/cart", label: "Cart" },
-      { href: "/contact", label: "Contact" },
+      { href: "/settings", label: "Settings" },
     ],
     []
   );
@@ -67,13 +68,13 @@ export function Footer() {
             <div className="flex flex-col md:flex-row gap-10 md:gap-50 lg:gap-30 xl:gap-50">
               <div className="space-y-3 text-lg font-medium">
                 {navLinks.map((link) => (
-                  <a
+                  <NavLink
                     key={link.label}
-                    href={link.href}
+                    to={link.href}
                     className="block hover:opacity-70"
                   >
                     {link.label}
-                  </a>
+                  </NavLink>
                 ))}
               </div>
               <div className="space-y-3 text-lg font-medium">

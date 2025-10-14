@@ -2,6 +2,7 @@ import React, { useState, useMemo, lazy, Suspense, useEffect, useRef } from "rea
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, useNavigate, useLocation } from "react-router-dom";
 import { asyncLogoutUser } from "../store/actions/userActions";
+import { toast } from "react-toastify";
 
 // Lazy load heavy components
 const GooeyNav = lazy(() => import("./Nav/GooeyNav"));
@@ -22,12 +23,13 @@ const Navbar = () => {
             { label: "Home", href: "/" },
             { label: "Products", href: "/products" },
             { label: "Settings", href: "/settings" },
-            { label: "", href: "/cart" },
+            
         ];
         // Add "Create Product" only if the user is an admin
         if (isAuthenticated && users?.isAdmin) {
             baseItems.push({ label: "Create Product", href: "/create-product" });
         }
+        baseItems.push({ label: "", href: "/cart" },)
         return baseItems;
     }, [isAuthenticated, users]);
 
@@ -37,6 +39,7 @@ const Navbar = () => {
         dispatch(asyncLogoutUser());
         setDropdownOpen(false);
         navigate('/login');
+        toast.success('Logged out Successfully')
     };
     useEffect(() => {
         function handleClickOutside(event) {
@@ -141,7 +144,7 @@ const Navbar = () => {
                                 </NavLink>
                             </li>
                         ))}
-
+                        <li className="lg:hidden"><span className="hover:text-[brown]"><NavLink to='/cart'><i className="ri-shopping-cart-fill  text-2xl"></i> Cart</NavLink></span></li>
                         {/* Conditional Links */}
                         {isAuthenticated ? (
                             <>

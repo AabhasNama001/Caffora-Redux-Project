@@ -36,7 +36,7 @@ export const asyncCurrentUser = () => async (dispatch, getState) => {
 
         if (user) dispatch(loaduser(user));
         else {
-            alert('user not loggedin !!');
+            // console.log('user not loggedin !!');
         }
     } catch (error) {
         console.log(error);

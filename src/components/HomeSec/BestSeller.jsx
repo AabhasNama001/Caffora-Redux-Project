@@ -16,46 +16,41 @@ export default function BestSeller() {
   const products = useMemo(() => [
     {
       id: 1,
-      title: "1829 Espresso.",
-      desc: "Our seasonal espresso blend, sourced, roasted, and brewed for an exceptional milk-based experience.",
-      price: "£12.00",
-      btn: "BUY NOW",
+      image: "/CoffeeBeans/coffeebean1a.jpg",
+      categ: "Coffee Beans",
+      desc: "Sourced globally, perfectly roasted beans; the foundation for your daily, aromatic ritual.",
+      btn: "Explore More",
     },
     {
       id: 2,
-      title: "Roaster’s Spotlight",
-      desc: "Explore the best of our single origin roasts; each delivery is hand-picked by our Roastery team.",
+       image: "/InstaPour/insta8a.jpg",
+      categ: "Insta Pour",
+      desc: "Instant, premium flavor; rich coffee ready in seconds, effortlessly elevating your day.",
       price: "£13.50",
-      btn: "SUBSCRIBE NOW",
+      btn: "Explore More",
     },
     {
       id: 3,
-      title: "Galeras Decaf.",
-      desc: "Clean, sweet and complex. Smooth milk chocolate and clear orange acidity for discerning coffee lovers.",
-      price: "£12.00",
-      btn: "BUY NOW",
+       image: "/Equipments/filter2a.jpg",
+      categ: "Coffee Equipments",
+      desc: "Tools for the artisan; machines and accessories to grind, brew, and master your perfect cup.",
+      btn: "Explore More",
     },
     {
       id: 4,
-      title: "Rituals Subscription.",
-      desc: "Smooth, everyday coffee. Rituals, on subscription.designed to make every day taste better.",
-      price: "£12.00",
-      btn: "BUY NOW",
+       image: "/Coffees/coffee7a.jpg",
+      categ: "Coffees",
+      desc: "Curated blends and unique single-origins, offering endless flavor journeys for every palate.",
+      btn: "Explore More",
     },
     {
       id: 5,
-      title: "Rituals Subscription.",
-      desc: "Smooth, everyday coffee. Rituals, on subscription.designed to make every day taste better.",
-      price: "£12.00",
-      btn: "BUY NOW",
+       image: "/Glasses&Mugs/mug6a.jpg",
+      categ: "Glasses & Mugs",
+      desc: "Stylish vessels for sipping; durable, ergonomic drinkware that enhances every coffee experience.",
+      btn: "Explore More",
     },
-    {
-      id: 6,
-      title: "Rituals Subscription.",
-      desc: "Smooth, everyday coffee. Rituals, on subscription.designed to make every day taste better.",
-      price: "£12.00",
-      btn: "BUY NOW",
-    }
+    
   ], []);
 
   useEffect(() => {
@@ -68,10 +63,10 @@ export default function BestSeller() {
     <section className="bg-[#FAF4EB] py-12 px-6">
       <div className="max-w-7xl mx-auto relative">
         {/* Heading */}
-        <div className="mb-8 text-center md:text-left">
-          <h2 className="text-3xl font-bold text-black mb-2">Subscribe today.</h2>
-          <p className="text-gray-700 max-w-md">
-            WatchHouse. YourHouse. The Modern Coffee experience in the comfort of your own home.
+        <div className="mb-8 text-center md:text-left flex flex-col items-center justify-center sm:gap-2 md:gap-4">
+          <h2 className="text-4xl sm:text-5xl font-bold text-black mb-2 md:text-6xl">Collections</h2>
+          <p className="text-gray-700 max-w-md text-center">
+            CAFFORA. YourHouse. The Modern Coffee experience in the comfort of your own home.
           </p>
         </div>
 
@@ -99,12 +94,12 @@ export default function BestSeller() {
           {products.map((item) => (
             <SwiperSlide key={item.id}>
               <div className="bg-[#DCC4A6] rounded-2xl p-6 flex flex-col h-full shadow-md">
-                <div className="h-40 bg-gray-200 rounded-xl flex items-center justify-center mb-6">
-                  <span className="text-gray-500">Product Image</span>
+                <div className=" bg-gray-200 rounded-xl  mb-6">
+                  <span className="text-gray-500">  <img className="h-[350px] w-full object-cover rounded-xl" src ={item.image}/></span>
                 </div>
-                <h3 className="text-lg font-semibold text-black mb-2">{item.title}</h3>
+                <h3 className="text-lg font-semibold text-black mb-2">{item.categ}</h3>
                 <p className="text-gray-700 text-sm mb-4">{item.desc}</p>
-                <p className="text-black font-bold mb-4">{item.price}</p>
+               
                 <ul className="text-sm text-gray-800 mb-6 space-y-1">
                   <li>✓ Free UK shipping</li>
                   <li>✓ Always 10% off</li>

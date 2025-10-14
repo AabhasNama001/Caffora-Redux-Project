@@ -1,4 +1,5 @@
 import { useRef, useEffect, useState } from "react";
+import { useSelector } from "react-redux";
 import { Link } from 'react-router-dom'
 import { useLocation } from "react-router-dom";
 
@@ -146,7 +147,7 @@ const GooeyNav = ({
     }
   }, [location.pathname]);
 
-
+  const user = useSelector((state)=>state.userReducer.users)
   return (
     <>
       {/* This effect is quite difficult to recreate faithfully using Tailwind, so a style tag is a necessary workaround */}
@@ -304,12 +305,31 @@ const GooeyNav = ({
             }}
           >
             {items.map((item, index) => {
-              if (index < 3) {
-                return (
+              if(!user?.isAdmin){
+                if (index < 3) {
+                  return (
+                      <li
+                        key={index}
+                        className={`rounded-full relative cursor-pointer transition-[background-color_color_box-shadow] duration-300 ease shadow-[0_0_0.5px_1.5px_transparent] text-black ${activeIndex === index ? "active" : ""
+                          }`}
+                      >
+                        <Link
+                          onClick={(e) => handleClick(e, index)}
+                          to={item.href}
+                          onKeyDown={(e) => handleKeyDown(e, index)}
+                          className="outline-none py-[0.3em] px-[0.6em] inline-block"
+                        >
+                          {item.label}
+                        </Link>
+                      </li>
+                  )
+                }
+                else{
+                  return (
                     <li
                       key={index}
                       className={`rounded-full relative cursor-pointer transition-[background-color_color_box-shadow] duration-300 ease shadow-[0_0_0.5px_1.5px_transparent] text-black ${activeIndex === index ? "active" : ""
-                        }`}
+                        } hidden`}
                     >
                       <Link
                         onClick={(e) => handleClick(e, index)}
@@ -320,25 +340,46 @@ const GooeyNav = ({
                         {item.label}
                       </Link>
                     </li>
-                )
+                  )
+                }
               }
               else{
-                return (
-                  <li
-                    key={index}
-                    className={`rounded-full relative cursor-pointer transition-[background-color_color_box-shadow] duration-300 ease shadow-[0_0_0.5px_1.5px_transparent] text-black ${activeIndex === index ? "active" : ""
-                      } hidden`}
-                  >
-                    <Link
-                      onClick={(e) => handleClick(e, index)}
-                      to={item.href}
-                      onKeyDown={(e) => handleKeyDown(e, index)}
-                      className="outline-none py-[0.3em] px-[0.6em] inline-block"
+                 if (index < 4) {
+                  return (
+                      <li
+                        key={index}
+                        className={`rounded-full relative cursor-pointer transition-[background-color_color_box-shadow] duration-300 ease shadow-[0_0_0.5px_1.5px_transparent] text-black ${activeIndex === index ? "active" : ""
+                          }`}
+                      >
+                        <Link
+                          onClick={(e) => handleClick(e, index)}
+                          to={item.href}
+                          onKeyDown={(e) => handleKeyDown(e, index)}
+                          className="outline-none py-[0.3em] px-[0.6em] inline-block"
+                        >
+                          {item.label}
+                        </Link>
+                      </li>
+                  )
+                }
+                else {
+                  return (
+                    <li
+                      key={index}
+                      className={`hidden rounded-full relative cursor-pointer transition-[background-color_color_box-shadow] duration-300 ease shadow-[0_0_0.5px_1.5px_transparent] text-black ${activeIndex === index ? "active" : ""
+                        } `} 
                     >
-                      {item.label}
-                    </Link>
-                  </li>
-                )
+                      <Link
+                        onClick={(e) => handleClick(e, index)}
+                        to={item.href}
+                        onKeyDown={(e) => handleKeyDown(e, index)}
+                        className="outline-none py-[0.3em] px-[0.6em] inline-block"
+                      >
+                        {item.label}
+                      </Link>
+                    </li>
+                  )
+                }
               }
             })}
           </ul>
