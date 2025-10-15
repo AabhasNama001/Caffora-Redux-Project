@@ -91,9 +91,9 @@ export default function FooterTitle() {
           {/* Custom Cursor */}
           <div
             ref={cursorRef}
-            className="cursor fixed top-0 left-0 w-10 h-10 flex items-center justify-center 
+            className="cursor fixed top-0 left-0 w-10 h-10 lg:flex items-center justify-center 
                        rounded-full bg-[#99804D] text-black text-[8px] font-bold pointer-events-none 
-                       z-50 text-center"
+                       z-50 text-center hidden"
           ></div>
 
           {/* Main Text */}

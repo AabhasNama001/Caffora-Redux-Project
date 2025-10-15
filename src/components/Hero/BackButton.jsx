@@ -9,7 +9,7 @@ const BackButton = () => {
   const navigate = useNavigate();
 
   const BackHandler = useCallback(() => {
-    navigate(-1);
+    navigate('/products');
   }, [navigate]);
 
   const handleMouseEnter = useCallback(() => {

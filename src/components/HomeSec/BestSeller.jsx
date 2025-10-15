@@ -6,6 +6,7 @@ import { EffectCoverflow, Pagination } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/effect-coverflow";
 import "swiper/css/pagination";
+import { useNavigate } from "react-router-dom";
 
 export default function BestSeller() {
   const prevRef = useRef(null);
@@ -52,7 +53,10 @@ export default function BestSeller() {
     },
     
   ], []);
-
+  const navigate = useNavigate();
+const ExploreMoreHandler = ()=>{
+  navigate('/products')
+}
   useEffect(() => {
     setNavReady(true);
   }, []);
@@ -105,7 +109,7 @@ export default function BestSeller() {
                   <li>✓ Always 10% off</li>
                   <li>✓ Pause, skip or cancel anytime</li>
                 </ul>
-                <button className="mt-auto bg-white text-black font-semibold py-2 px-4 rounded-lg shadow hover:bg-gray-100 transition">
+                <button onClick={ExploreMoreHandler} className="mt-auto bg-white text-black font-semibold py-2 px-4 rounded-lg shadow hover:bg-gray-100 transition cursor-pointer active:scale-[0.96]">
                   {item.btn}
                 </button>
               </div>
