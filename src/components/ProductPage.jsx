@@ -6,6 +6,7 @@ import { asyncLoadProducts } from '../store/actions/productActions'; // Assuming
 import UpdateProduct from '../Pages/admin/UpdateProduct';
 import { asyncUpdateUser } from '../store/actions/userActions';
 import { toast } from 'react-toastify';
+import ProductDetailsBottom from './ProductDetailsBottom';
 
 const ProductPage = () => {
     const [quantity, setQuantity] = useState(1);
@@ -166,6 +167,8 @@ const ProductPage = () => {
             </div>
 
             {user && user?.isAdmin && <UpdateProduct product={product}/>}
+
+        <ProductDetailsBottom product = {product}/>
         </div>
     ) : "Loading";
 };

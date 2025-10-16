@@ -2,6 +2,9 @@ import React from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { asyncUpdateUser } from '../store/actions/userActions'
 import { NavLink } from 'react-router-dom'
+import { toast } from 'react-toastify';
+// Import the CSS for react-toastify if you haven't already in your main app file
+// import 'react-toastify/dist/ReactToastify.css';
 
 const Cart = () => {
   const dispatch = useDispatch()
@@ -35,6 +38,65 @@ const Cart = () => {
   )
   const shipping = users?.cart?.length > 0 ? 50 : 0
   const total = subtotal + shipping
+
+  // --- START: UPDATED PaymentHandler and Toast Component ---
+  const OrderToastContent = ({ subtotal, shipping, total, itemCount }) => (
+    <div className='p-2'>
+      <h3 className='text-xl font-bold text-[#38761D] mb-2'>✅ Order Placed Successfully! ☕</h3>
+      <p className='text-sm text-[#5B2C06] font-medium mb-2'>Your coffee is brewing and will be delivered soon!</p>
+      <div className='border-t border-gray-200 pt-2'>
+        <div className='flex justify-between text-sm'>
+          <span className='text-gray-600'>Items ({itemCount})</span>
+          <span className='font-medium'>Rs. {subtotal.toFixed(2)}</span>
+        </div>
+        <div className='flex justify-between text-sm'>
+          <span className='text-gray-600'>Shipping</span>
+          <span className='font-medium'>Rs. {shipping.toFixed(2)}</span>
+        </div>
+        <div className='flex justify-between font-bold text-base mt-1 text-[#5B2C06]'>
+          <span>Total</span>
+          <span>Rs. {total.toFixed(2)}</span>
+        </div>
+      </div>
+    </div>
+  );
+
+
+  const PaymentHandler = () => {
+    if (users?.cart?.length === 0) {
+      toast.error("Your cart is empty. Add some items to place an order!");
+      return;
+    }
+
+    toast.success(
+      <OrderToastContent
+        subtotal={subtotal}
+        shipping={shipping}
+        total={total}
+        itemCount={users.cart.length}
+      />,
+      {
+        // Custom CSS styling (using react-toastify config)
+        position: "top-right",
+        autoClose: 5000,
+        hideProgressBar: false,
+        closeOnClick: true,
+        pauseOnHover: true,
+        draggable: true,
+        progress: undefined,
+        theme: "light",
+        // Custom classNames (assuming you have Tailwind CSS or similar available globally)
+        // If you are using plain CSS, you'd define these classes in a CSS file.
+        className: 'bg-[#FCF7E6] border border-[#E3D3B5] rounded-xl shadow-xl p-0', // Applied to the toast container
+        bodyClassName: 'p-0', // Removes padding inside the body
+        progressClassName: 'bg-[#E17B25]', // Custom color for the progress bar
+      }
+    );
+
+    // Optional: Clear the cart after successful payment simulation (Requires a new action/reducer logic)
+    // dispatch(asyncUpdateUser(users.id, { ...users, cart: [] })) 
+  }
+  // --- END: UPDATED PaymentHandler and Toast Component ---
 
   return (
     <div className='relative bg-[#FCF7E6] min-h-screen w-full py-20 px-4 flex flex-col items-center z-20 '>
@@ -118,7 +180,7 @@ const Cart = () => {
               <span>Order Total</span>
               <span>Rs. {total.toFixed(2)}</span>
             </div>
-            <button className='w-full bg-[#E17B25] text-white py-3 rounded-lg font-semibold tracking-wide hover:bg-[#D26A1F] transition'>
+            <button onClick={PaymentHandler} className='w-full bg-[#E17B25] text-white py-3 rounded-lg font-semibold tracking-wide hover:bg-[#D26A1F] transition'>
               PROCEED TO CHECKOUT
             </button>
             <p className='text-xs text-center text-[#7B5E2E] mt-2'>
@@ -132,4 +194,3 @@ const Cart = () => {
 }
 
 export default Cart
-

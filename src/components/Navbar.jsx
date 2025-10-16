@@ -56,13 +56,13 @@ const Navbar = () => {
     return (
         <nav className="fixed top-0 left-0 w-full bg-black/10 backdrop-blur-md z-50 flex justify-between items-center px-6 md:px-10 py-1 text-white">
             {/* LOGO */}
-            <div className="logo">
+            <NavLink to='/' className="logo">
                 <img
                     src="/TLogo.png"
                     alt="Logo"
                     className="w-30 h-auto object-cover lg:w-40"
                 />
-            </div>
+            </NavLink>
 
             {/* Desktop Nav */}
             <div className="hidden lg:flex h-25 relative w-fit justify-center items-center">
